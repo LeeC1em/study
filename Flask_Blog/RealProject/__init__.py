@@ -53,6 +53,10 @@ def create_app(test_config=None):
     # 全局上下文
     app.context_processor(inject_category)
 
+    # 注册自定义命令
+    from app.admin.utils import init_script
+    init_script(app)
+
     return app
 
 

@@ -1,9 +1,14 @@
 import os
 import uuid
+import click
+from flask import Flask
 
 from werkzeug.utils import secure_filename
+from werkzeug.security import generate_password_hash
 
 from RealProject.settings import BASE_DIR
+from app.auth.models import User
+from RealProject import db
 
 
 def _file_path(directory_name):
@@ -25,3 +30,16 @@ def upload_file_path(direcotory_name, f):
     file_path = _file_path(direcotory_name)
     filename = update_filename(f)
     return file_path / filename, filename
+
+
+def init_script(app: Flask):
+    """自定义命令"""
+
+    @app.cli.command()
+    @click.option('--username', prompt=True, help='请输入用户名！')
+    @click.option('--password', prompt=True, hide_input=True, confirmation_prompt=True, help='请输入密码！')
+    def createsuperuser(username, password):
+        user = User(username=username, passowrd=generate_password_hash(password), is_super_user=True)
+        db.session.add(user)
+        db.session.commit()
+        click.echo(f'超级管理员{username}创建成功')
