@@ -1,0 +1,7 @@
+问题：执行flask db migrate命令出现以下报错：
+    ERROR [flask_migrate] Error: Can't locate revision identified by '5e8a3cf5c1c4'
+解决方法：在数据库中删除 alembic_version表
+
+
+问题：render_template('index.html')中的'index.html'标黄，提示Template file 'index.html' not found
+解决方法：右键 同级目录 下的 templates 文件夹选择 Mark Directory as ，选择 Template Folder

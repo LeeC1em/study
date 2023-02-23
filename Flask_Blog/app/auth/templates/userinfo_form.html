@@ -1,0 +1,85 @@
+{% extends 'userinfo.html' %}
+
+{% block menus %}
+<aside class="menu">
+    <p class="menu-label">
+        个人中心
+    </p>
+    <ul class="menu-list">
+        <li><a class="{% if request.path == '/auth/edit' %}is-active{% endif %}"
+                href="{{ url_for('auth.userinfo') }}">个人信息</a></li>
+        <li>
+            <a class="" href="">我的收藏</a>
+        </li>
+        <li>
+            <a class="" href="">我的评论</a>
+        </li>
+    </ul>
+</aside>
+{% endblock menus %}
+
+{% block member %}
+<template>
+    <b-tabs>
+        <b-tab-item label="修改个人信息" icon="account-outline">
+            <form action="" method="post" class="mt-4">
+                {{ form.csrf_token }}
+                <div class="field">
+                    {{ form.signature.label(class='label') }}
+                    <div class="control">
+                        {{ form.signature(class='input', placeholder='个性签名') }}
+                    </div>
+                </div>
+                <div class="field is-horizontal">
+                    {{ form.gender.label(class='label') }}
+                    <div class="field-body ml-4">
+                        <div class="control">
+                            {# 默认选中用户原有信息中的性别 #}
+                            {% if form.gender.data == '2' %}
+                            <label class="radio">
+                                <input type="radio" name="gender" value="male">
+                                男
+                            </label>
+                            <label class="radio">
+                                <input checked="checked" type="radio" name="gender" value="female">
+                                女
+                            </label>
+                            {% else %}
+                            <label class="radio">
+                                <input checked="checked" type="radio" name="gender" value="male">
+                                男
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="gender" value="female">
+                                女
+                            </label>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    {{ form.email.label(class='label') }}
+                    <div class="control">
+                        {{ form.email(class='input', placeholder='邮箱') }}
+                    </div>
+                </div>
+                <div class="field">
+                    {{ form.profile.label(class='label') }}
+                    <div class="control">
+                        {{ form.profile(class='textarea', rows="10", placeholder='个人简介') }}
+                    </div>
+                </div>
+                <div class="is-block">
+                    <div class="box has-background-light is-shadowless level">
+                        <a href="" class=" is-danger button level-left">删除</a>
+                        <div class="level-right">
+                            <a href="{{ url_for('auth.userinfo') }}" class="button is-primary is-light mr-2">返回</a>
+                            <input type="submit" value="保存" class=" button is-success">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </b-tab-item>
+    </b-tabs>
+</template>
+{% endblock member %}
