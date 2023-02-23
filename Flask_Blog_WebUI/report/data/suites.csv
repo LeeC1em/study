@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Dec 04 15:57:57 HKT 2022","Sun Dec 04 15:57:59 HKT 2022","1923","testcase","test_baidu","Test_Baidu","","","test_baidu_search[python-python_百度搜索]",""
+"passed","Sun Dec 04 15:58:01 HKT 2022","Sun Dec 04 15:58:02 HKT 2022","1243","testcase","test_baidu","Test_Baidu","","","test_baidu_search[selenium-selenium_百度搜索]",""
+"passed","Sun Dec 04 15:57:59 HKT 2022","Sun Dec 04 15:58:01 HKT 2022","1325","testcase","test_baidu","Test_Baidu","","","test_baidu_search[pytest-pytest_百度搜索]",""
