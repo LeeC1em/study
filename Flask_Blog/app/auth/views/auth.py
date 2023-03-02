@@ -197,3 +197,8 @@ def userinfo_edit(user_id):
         flash('个人信息修改成功')
         return redirect(url_for('auth.userinfo'))
     return render_template('userinfo_form.html', form=form)
+
+
+@bp.route('/loginfail', methods=['GET', 'POST'])
+def loginfail():
+    return render_template('loginfail.html')
